@@ -10,9 +10,11 @@ def estimator(input):
     res["impact"]["currentlyInfected"] = input["reportedCases"] * 10
     res["severeImpact"]["currentlyInfected"] = input["reportedCases"] * 50
 
-    if input['periodType'] == "weeks":
+    print(type(input["reportedCases"] ))
+
+    if input['periodType'] == "Weeks":
         input['timeToElapse'] = input['timeToElapse'] * 7
-    elif input["periodType"] == "months":
+    elif input["periodType"] == "Months":
         input["timeToElapse"] = input["timeToElapse"] * 30
 
     factor = input["timeToElapse"] // 3
@@ -20,7 +22,7 @@ def estimator(input):
     res["impact"]["infectionsByRequestedTime"] = res["impact"]["currentlyInfected"] * factor
     res["severeImpact"]["infectionsByRequestedTime"] = res["severeImpact"]["currentlyInfected"] * factor
 
-    
+
 
     # res["impact"]["severeCasesByRequestedTime"] = res["impact"]["infectionsByRequestedTime"] * 0.15
     # res["severeImpact"]["severeCasesByRequestedTime"] = res["severeImpact"]["infectionsByRequestedTime"] * 0.15
