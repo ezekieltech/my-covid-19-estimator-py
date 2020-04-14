@@ -38,8 +38,8 @@ def estimator(input):
     res["impact"]["casesForICUByRequestedTime"] = res["impact"]["infectionsByRequestedTime"] * 0.05
     res["severeImpact"]["casesForICUByRequestedTime"] = res["severeImpact"]["infectionsByRequestedTime"] * 0.05
 
-    res["impact"]["casesForVentilatorsByRequestedTime"] = int(res["impact"]["infectionsByRequestedTime"] * 0.05)
-    res["severeImpact"]["casesForVentilatorsByRequestedTime"] = int(res["severeImpact"]["infectionsByRequestedTime"] * 0.05)
+    res["impact"]["casesForVentilatorsByRequestedTime"] = int(res["impact"]["infectionsByRequestedTime"] * 0.02)
+    res["severeImpact"]["casesForVentilatorsByRequestedTime"] = int(res["severeImpact"]["infectionsByRequestedTime"] * 0.02)
 
     res["impact"]["dollarsInFlight"] = int((res["impact"]["infectionsByRequestedTime"]
                                         * 0.65) * input["region"]["avgDailyIncomeInUSD"]*input['timeToElapse'])
