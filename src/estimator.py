@@ -16,8 +16,10 @@ def estimator(input):
 
     factor = input["timeToElapse"] // 3
 
-    res["impact"]["infectionsByRequestedTime"] = res["impact"]["currentlyInfected"] * factor
-    res["severeImpact"]["infectionsByRequestedTime"] = res["severeImpact"]["currentlyInfected"] * factor
+    effective_factor = 2 ** factor
+
+    res["impact"]["infectionsByRequestedTime"] = res["impact"]["currentlyInfected"] * effective_factor
+    res["severeImpact"]["infectionsByRequestedTime"] = res["severeImpact"]["currentlyInfected"] * effective_factor
 
 
 
