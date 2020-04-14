@@ -20,6 +20,8 @@ def estimator(input):
     res["impact"]["infectionsByRequestedTime"] = res["impact"]["currentlyInfected"] * factor
     res["severeImpact"]["infectionsByRequestedTime"] = res["severeImpact"]["currentlyInfected"] * factor
 
+    
+
     # res["impact"]["severeCasesByRequestedTime"] = res["impact"]["infectionsByRequestedTime"] * 0.15
     # res["severeImpact"]["severeCasesByRequestedTime"] = res["severeImpact"]["infectionsByRequestedTime"] * 0.15
 
