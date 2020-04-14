@@ -29,23 +29,21 @@ def estimator(input):
         res["severeImpact"]["infectionsByRequestedTime"] * 0.15)
 
     beds_unused_by_hospital = input["totalHospitalBeds"] * 0.35
-    res["impact"]["hospitalBedsByRequestedTime"] = int(beds_unused_by_hospital -
-                                                       res["impact"]["severeCasesByRequestedTime"])
-    res["severeImpact"]["hospitalBedsByRequestedTime"] = int(beds_unused_by_hospital -
-                                                             res["severeImpact"]["severeCasesByRequestedTime"])
+    res["impact"]["hospitalBedsByRequestedTime"] = int(beds_unused_by_hospital - \
+        res["impact"]["severeCasesByRequestedTime"])
+    res["severeImpact"]["hospitalBedsByRequestedTime"] = int(beds_unused_by_hospital - \
+        res["severeImpact"]["severeCasesByRequestedTime"])
 
     # Challenge 3
-    res["impact"]["casesForICUByRequestedTime"] = res["impact"]["infectionsByRequestedTime"] * 0.05
-    res["severeImpact"]["casesForICUByRequestedTime"] = res["severeImpact"]["infectionsByRequestedTime"] * 0.05
+    res["impact"]["casesForICUByRequestedTime"] = int(res["impact"]["infectionsByRequestedTime"] * 0.05)
+    res["severeImpact"]["casesForICUByRequestedTime"] = int(res["severeImpact"]["infectionsByRequestedTime"] * 0.05)
 
-    res["impact"]["casesForVentilatorsByRequestedTime"] = int(
-        res["impact"]["infectionsByRequestedTime"] * 0.02)
-    res["severeImpact"]["casesForVentilatorsByRequestedTime"] = int(
-        res["severeImpact"]["infectionsByRequestedTime"] * 0.02)
+    res["impact"]["casesForVentilatorsByRequestedTime"] = int(res["impact"]["infectionsByRequestedTime"] * 0.02)
+    res["severeImpact"]["casesForVentilatorsByRequestedTime"] = int(res["severeImpact"]["infectionsByRequestedTime"] * 0.02)
 
-    res["impact"]["dollarsInFlight"] = int((res["impact"]["casesForICUByRequestedTime"]+res["impact"]["casesForVentilatorsByRequestedTime"])
-                                           * input["region"]["avgDailyIncomePopulation"] * input["region"]["avgDailyIncomeInUSD"]*input['timeToElapse'])
+    res["impact"]["dollarsInFlight"] = int(res["impact"]["infectionsByRequestedTime"]
+                                        * input["region"]["avgDailyIncomePopulation"] * input["region"]["avgDailyIncomeInUSD"]*input['timeToElapse'])
     res["severeImpact"]["dollarsInFlight"] = int(
-        (res["severeImpact"]["casesForICUByRequestedTime"]+res["severeImpact"]["casesForVentilatorsByRequestedTime"]) * input["region"]["avgDailyIncomePopulation"] * input["region"]["avgDailyIncomeInUSD"]*input['timeToElapse'])
+        res["severeImpact"]["infectionsByRequestedTime"] * input["region"]["avgDailyIncomePopulation"] * input["region"]["avgDailyIncomeInUSD"]*input['timeToElapse'])
 
     return res
