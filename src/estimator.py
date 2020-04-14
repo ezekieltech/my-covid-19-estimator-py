@@ -42,8 +42,8 @@ def estimator(input):
     res["severeImpact"]["casesForVentilatorsByRequestedTime"] = int(res["severeImpact"]["infectionsByRequestedTime"] * 0.02)
 
     res["impact"]["dollarsInFlight"] = int((res["impact"]["infectionsByRequestedTime"]
-                                        * 0.65) * input["region"]["avgDailyIncomeInUSD"]*input['timeToElapse'])
+                                        * input["region"]["avgDailyIncomePopulation"]) * input["region"]["avgDailyIncomeInUSD"]*input['timeToElapse'])
     res["severeImpact"]["dollarsInFlight"] = int((
-        res["severeImpact"]["infectionsByRequestedTime"] * 0.65) * input["region"]["avgDailyIncomeInUSD"]*input['timeToElapse'])
+        res["severeImpact"]["infectionsByRequestedTime"] * input["region"]["avgDailyIncomePopulation"]) * input["region"]["avgDailyIncomeInUSD"]*input['timeToElapse'])
 
     return res
