@@ -5,6 +5,7 @@ def estimator(input):
         "severeImpact": {}
     }
 
+    # challenge 1
     res["data"] = input
     res["impact"]["currentlyInfected"] = input["reportedCases"] * 10
     res["severeImpact"]["currentlyInfected"] = input["reportedCases"] * 50
@@ -22,21 +23,21 @@ def estimator(input):
     res["severeImpact"]["infectionsByRequestedTime"] = res["severeImpact"]["currentlyInfected"] * effective_factor
 
 
+    # Challenge 2
+    res["impact"]["severeCasesByRequestedTime"] = res["impact"]["infectionsByRequestedTime"] * 0.15
+    res["severeImpact"]["severeCasesByRequestedTime"] = res["severeImpact"]["infectionsByRequestedTime"] * 0.15
 
-    # res["impact"]["severeCasesByRequestedTime"] = res["impact"]["infectionsByRequestedTime"] * 0.15
-    # res["severeImpact"]["severeCasesByRequestedTime"] = res["severeImpact"]["infectionsByRequestedTime"] * 0.15
+    beds_unused_by_hospital = input["totalHospitalBeds"] * .90 * 0.35
+    res["impact"]["hospitalBedsByRequestedTime"] = beds_unused_by_hospital - \
+        res["impact"]["severeCasesByRequestedTime"]
+    res["severeImpact"]["hospitalBedsByRequestedTime"] = beds_unused_by_hospital - \
+        res["severeImpact"]["severeCasesByRequestedTime"]
 
-    # beds_unused_by_hospital = input["totalHospitalBeds"] * .90 * 0.35
-    # res["impact"]["hospitalBedsByRequestedTime"] = beds_unused_by_hospital - \
-    #     res["impact"]["severeCasesByRequestedTime"]
-    # res["severeImpact"]["hospitalBedsByRequestedTime"] = beds_unused_by_hospital - \
-    #     res["severeImpact"]["severeCasesByRequestedTime"]
+    res["impact"]["casesForICUByRequestedTime"] = res["impact"]["infectionsByRequestedTime"] * 0.05
+    res["severeImpact"]["casesForICUByRequestedTime"] = res["severeImpact"]["infectionsByRequestedTime"] * 0.05
 
-    # res["impact"]["casesForICUByRequestedTime"] = res["impact"]["infectionsByRequestedTime"] * 0.05
-    # res["severeImpact"]["casesForICUByRequestedTime"] = res["severeImpact"]["infectionsByRequestedTime"] * 0.05
-
-    # res["impact"]["casesForVentilatorsByRequestedTime"] = res["impact"]["infectionsByRequestedTime"] * 0.05
-    # res["severeImpact"]["casesForVentilatorsByRequestedTime"] = res["severeImpact"]["infectionsByRequestedTime"] * 0.05
+    res["impact"]["casesForVentilatorsByRequestedTime"] = res["impact"]["infectionsByRequestedTime"] * 0.05
+    res["severeImpact"]["casesForVentilatorsByRequestedTime"] = res["severeImpact"]["infectionsByRequestedTime"] * 0.05
 
     
 
