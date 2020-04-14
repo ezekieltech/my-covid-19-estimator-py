@@ -5,6 +5,7 @@ def estimator(input):
         "severeImpact": {}
     }
 
+
     res["data"] = input
     res["impact"]["currentlyInfected"] = input["reportedCases"] * 10
     res["severeImpact"]["currentlyInfected"] = input["reportedCases"] * 50
