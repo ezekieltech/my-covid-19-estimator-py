@@ -29,10 +29,10 @@ def estimator(input):
         res["severeImpact"]["infectionsByRequestedTime"] * 0.15)
 
     beds_unused_by_hospital = input["totalHospitalBeds"] * 0.35
-    res["impact"]["hospitalBedsByRequestedTime"] = beds_unused_by_hospital - \
-        res["impact"]["severeCasesByRequestedTime"]
-    res["severeImpact"]["hospitalBedsByRequestedTime"] = beds_unused_by_hospital - \
-        res["severeImpact"]["severeCasesByRequestedTime"]
+    res["impact"]["hospitalBedsByRequestedTime"] = int(beds_unused_by_hospital - \
+        res["impact"]["severeCasesByRequestedTime"])
+    res["severeImpact"]["hospitalBedsByRequestedTime"] = int(beds_unused_by_hospital - \
+        res["severeImpact"]["severeCasesByRequestedTime"])
 
     # res["impact"]["casesForICUByRequestedTime"] = res["impact"]["infectionsByRequestedTime"] * 0.05
     # res["severeImpact"]["casesForICUByRequestedTime"] = res["severeImpact"]["infectionsByRequestedTime"] * 0.05
