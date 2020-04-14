@@ -5,12 +5,9 @@ def estimator(input):
         "severeImpact": {}
     }
 
-
     res["data"] = input
     res["impact"]["currentlyInfected"] = input["reportedCases"] * 10
     res["severeImpact"]["currentlyInfected"] = input["reportedCases"] * 50
-
-    print(type(input["reportedCases"] ))
 
     if input['periodType'] == "Weeks":
         input['timeToElapse'] = input['timeToElapse'] * 7
